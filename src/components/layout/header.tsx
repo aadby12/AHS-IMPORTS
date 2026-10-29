@@ -10,9 +10,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/how-it-works", label: "How It Works" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -66,8 +66,8 @@ export function Header() {
   }, [query]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-ivory">
-      <div className="mx-auto flex h-[4.5rem] max-w-[1180px] items-center gap-3 px-4 md:px-8">
+    <header className="sticky top-0 z-40 border-b border-line bg-white">
+      <div className="shell relative flex h-[4.5rem] items-center gap-3">
         <button
           type="button"
           className="inline-flex h-11 w-11 items-center justify-center lg:hidden"
@@ -83,36 +83,34 @@ export function Header() {
           </span>
         </button>
 
-        <Link href="/" className="flex min-w-0 items-center gap-2" aria-label="AHS Imports, home">
+        <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="AHS Imports, home">
           <Image
             src="/brand/logo.webp"
             alt=""
             width={56}
             height={56}
             priority
-            className="h-11 w-11"
+            className="h-10 w-10"
           />
-          <span className="truncate font-display text-[1.65rem] leading-none tracking-tight">
-            AHS <span className="italic">Imports</span>
+          <span className="leading-none">
+            <span className="block text-[13px] font-extrabold tracking-[0.14em] uppercase">AHS Imports</span>
+            <span className="mt-1 hidden text-[9px] tracking-[0.18em] text-stone uppercase sm:block">Everyday finds</span>
           </span>
         </Link>
 
-        <nav className="ml-6 hidden items-center gap-6 lg:flex" aria-label="Primary">
-          {links.slice(0, 2).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm ${pathname === link.href ? "underline decoration-ink underline-offset-4" : ""}`}
-              aria-current={pathname === link.href ? "page" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="ml-8 hidden items-center gap-6 lg:flex" aria-label="Primary">
+          <Link
+            href="/shop"
+            className={`text-sm ${pathname === "/shop" ? "font-semibold text-forest" : ""}`}
+            aria-current={pathname === "/shop" ? "page" : undefined}
+          >
+            Shop
+          </Link>
           <details className="relative">
             <summary className="cursor-pointer list-none text-sm [&::-webkit-details-marker]:hidden">
               Categories
             </summary>
-            <div className="absolute left-0 top-full z-10 mt-3 w-64 border border-line bg-ivory p-2">
+            <div className="absolute left-0 top-full z-10 mt-3 w-64 rounded-2xl border border-line bg-white p-2 shadow-lift">
               {categories.map((category) => (
                 <Link
                   key={category.slug}
@@ -124,11 +122,11 @@ export function Header() {
               ))}
             </div>
           </details>
-          {links.slice(2).map((link) => (
+          {links.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm ${pathname === link.href ? "underline decoration-ink underline-offset-4" : ""}`}
+              className={`text-sm ${pathname === link.href ? "font-semibold text-forest" : ""}`}
               aria-current={pathname === link.href ? "page" : undefined}
             >
               {link.label}
@@ -137,18 +135,24 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1 sm:gap-2">
-          <Link
-            href="/shop"
-            className="hidden h-11 items-center bg-ink px-4 text-xs uppercase tracking-[0.16em] text-ivory md:inline-flex"
-          >
-            Shop Now
-          </Link>
+          <form action="/shop" className="mr-2 hidden h-10 items-center rounded-full border border-line bg-[#f6f6f6] px-3 lg:flex">
+            <SearchIcon />
+            <label htmlFor="header-search" className="sr-only">
+              Search products
+            </label>
+            <input
+              id="header-search"
+              name="q"
+              placeholder="Search products"
+              className="w-36 bg-transparent px-2 text-sm outline-none xl:w-48"
+            />
+          </form>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center"
+            className="inline-flex h-11 w-11 items-center justify-center lg:hidden"
             aria-expanded={searchOpen}
             aria-controls="site-search"
-            onClick={() => setSearchPath(pathname)}
+            onClick={() => setSearchPath(searchOpen ? null : pathname)}
           >
             <span className="sr-only">Search products</span>
             <SearchIcon />
@@ -165,7 +169,7 @@ export function Header() {
           >
             <BagIcon />
             {ready && count > 0 ? (
-              <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center bg-ink px-1 text-[10px] text-ivory">
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-forest px-1 text-[10px] text-cream">
                 {count}
               </span>
             ) : null}
@@ -174,9 +178,9 @@ export function Header() {
       </div>
 
       {menuOpen ? (
-        <div id="mobile-menu" className="fixed inset-0 z-50 bg-ivory lg:hidden" role="dialog" aria-modal="true" aria-labelledby={menuTitleId}>
+        <div id="mobile-menu" className="fixed inset-0 z-50 bg-white lg:hidden" role="dialog" aria-modal="true" aria-labelledby={menuTitleId}>
           <div className="flex h-[4.5rem] items-center justify-between px-4">
-            <p id={menuTitleId} className="font-display text-3xl">
+            <p id={menuTitleId} className="text-sm font-bold tracking-[0.16em] uppercase">
               Menu
             </p>
             <button type="button" className="h-11 px-3" onClick={() => setMenuPath(null)}>
@@ -184,11 +188,8 @@ export function Header() {
             </button>
           </div>
           <nav className="grid gap-1 px-6 pb-10" aria-label="Mobile">
-            <Link href="/shop" className="border-b border-line py-4 font-display text-4xl">
-              Shop Now
-            </Link>
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="border-b border-line py-4 font-display text-4xl">
+              <Link key={link.href} href={link.href} className="border-b border-line py-4 text-lg font-semibold">
                 {link.label}
               </Link>
             ))}
@@ -198,7 +199,7 @@ export function Header() {
                 {category.name}
               </Link>
             ))}
-            <Link href="/cart" className="mt-6 inline-flex h-12 items-center justify-center border border-ink text-sm uppercase tracking-[0.14em]">
+            <Link href="/cart" className="btn mt-8">
               Shopping bag{ready && count > 0 ? ` (${count})` : ""}
             </Link>
           </nav>
@@ -206,9 +207,9 @@ export function Header() {
       ) : null}
 
       {searchOpen ? (
-        <div id="site-search" className="fixed inset-0 z-50 bg-ivory" role="dialog" aria-modal="true" aria-labelledby={searchTitleId}>
+        <div id="site-search" className="fixed inset-0 z-50 bg-white" role="dialog" aria-modal="true" aria-labelledby={searchTitleId}>
           <div className="mx-auto flex h-[4.5rem] max-w-[1180px] items-center justify-between px-4 md:px-8">
-            <p id={searchTitleId} className="font-display text-3xl">
+            <p id={searchTitleId} className="text-sm font-bold tracking-[0.16em] uppercase">
               Search
             </p>
             <button type="button" className="h-11 px-3" onClick={() => setSearchPath(null)}>
@@ -225,7 +226,7 @@ export function Header() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search the sample collection"
-              className="h-14 w-full border-b border-ink bg-transparent font-display text-3xl outline-none placeholder:text-stone"
+              className="h-14 w-full border-b border-ink bg-transparent text-2xl outline-none placeholder:text-stone"
             />
             <ul className="mt-6 divide-y divide-line">
               {results.length === 0 ? (

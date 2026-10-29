@@ -47,7 +47,7 @@ export function CartDrawer() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="bag-title"
-        className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-ivory shadow-xl"
+        className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-paper shadow-lift"
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 id="bag-title" className="font-display text-3xl">
@@ -104,7 +104,7 @@ export function CartDrawer() {
           <Link
             href="/cart"
             onClick={() => setDrawerOpen(false)}
-            className="inline-flex h-12 w-full items-center justify-center bg-ink text-sm uppercase tracking-[0.14em] text-ivory"
+            className="btn w-full"
           >
             Review enquiry
           </Link>

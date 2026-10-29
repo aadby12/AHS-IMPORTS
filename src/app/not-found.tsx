@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="mt-4 text-sm leading-relaxed text-stone">
         That address is not part of this demonstration.
       </p>
-      <Link href="/shop" className="mt-8 inline-flex h-12 items-center bg-ink px-5 text-sm uppercase tracking-[0.14em] text-ivory">
+      <Link href="/shop" className="btn mt-8">
         Browse the collection
       </Link>
     </div>

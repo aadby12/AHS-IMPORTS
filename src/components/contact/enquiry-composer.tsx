@@ -74,7 +74,7 @@ export function EnquiryComposer() {
           message through this website, and it does not confirm an order.
         </p>
       )}
-      <button type="submit" className="h-12 bg-ink text-sm uppercase tracking-[0.14em] text-ivory">
+      <button type="submit" className="btn">
         Continue on WhatsApp
       </button>
       <p className="text-xs text-stone">No email address is published for this demo.</p>

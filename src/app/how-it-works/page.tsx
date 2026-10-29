@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
         </section>
 
         <div className="flex flex-col gap-3 border-t border-line pt-10 sm:flex-row">
-          <Link href="/shop" className="inline-flex h-12 items-center justify-center bg-ink px-5 text-sm uppercase tracking-[0.14em] text-ivory">
+          <Link href="/shop" className="btn">
             Explore the collection
           </Link>
           <Link href="/cart" className="inline-flex h-12 items-center justify-center border border-ink px-5 text-sm uppercase tracking-[0.14em]">

@@ -1,25 +1,21 @@
+import { HeroSlider } from "@/components/home/hero-slider";
 import {
   CategorySection,
-  ClosingCta,
+  ClosingSection,
   FeaturedSection,
-  Hero,
   InstagramSection,
   PreorderSection,
-  SpotlightSection,
-  WhySection,
 } from "@/components/home/home-sections";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HeroSlider />
       <CategorySection />
       <FeaturedSection />
       <PreorderSection />
-      <WhySection />
-      <SpotlightSection />
+      <ClosingSection />
       <InstagramSection />
-      <ClosingCta />
     </>
   );
 }

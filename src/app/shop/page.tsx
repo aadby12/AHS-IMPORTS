@@ -23,9 +23,12 @@ export default function ShopPage({
   return (
     <>
       <header className="border-b border-line">
-        <div className="mx-auto max-w-[1180px] px-5 py-12 md:px-8 md:py-16">
-          <p className="text-[11px] uppercase tracking-[0.28em] text-stone">The collection</p>
+        <div className="shell py-12 md:py-16">
+          <p className="eyebrow">The collection</p>
           <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">Shop all</h1>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">
+            Browse sample products across the categories AHS Imports offers on preorder.
+          </p>
         </div>
       </header>
       <Suspense fallback={<p className="px-5 py-16 text-sm text-stone">Loading the collection…</p>}>

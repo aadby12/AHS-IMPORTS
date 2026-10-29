@@ -21,7 +21,7 @@ export function ShopCatalogue({
   const action = activeCategory ? `/category/${activeCategory.slug}` : "/shop";
 
   return (
-    <div className="mx-auto max-w-[1180px] px-5 py-10 md:px-8 md:py-14">
+    <div className="shell py-10 md:py-14">
       <p className="max-w-2xl text-sm leading-relaxed text-stone">
         These are illustrative samples for the demo, not confirmed AHS Imports inventory.
         Prices marked illustrative are not quotations.
@@ -37,11 +37,11 @@ export function ShopCatalogue({
             name="q"
             defaultValue={q}
             placeholder="Search names and descriptions"
-            className="h-12 w-full border border-line bg-paper px-3 text-sm"
+            className="h-12 w-full border border-line bg-paper px-4 text-sm outline-none focus:border-forest"
           />
         </div>
         {sort !== "featured" ? <input type="hidden" name="sort" value={sort} /> : null}
-        <button type="submit" className="h-12 bg-ink px-5 text-xs uppercase tracking-[0.14em] text-ivory">
+        <button type="submit" className="btn">
           Search
         </button>
       </form>
@@ -80,7 +80,7 @@ export function ShopCatalogue({
                 href={href}
                 role="listitem"
                 aria-current={current ? "true" : undefined}
-                className={`text-xs uppercase tracking-[0.14em] ${current ? "text-ink underline underline-offset-4" : "text-stone"}`}
+                className={`text-sm ${current ? "text-forest underline underline-offset-4" : "text-stone"}`}
               >
                 {option.label}
               </Link>
@@ -141,8 +141,8 @@ function FilterLink({
     <Link
       href={href}
       aria-current={current ? "true" : undefined}
-      className={`shrink-0 border px-3 py-2 text-xs uppercase tracking-[0.14em] ${
-        current ? "border-ink bg-ink text-ivory" : "border-line"
+      className={`inline-flex h-11 shrink-0 items-center border px-3 text-sm ${
+        current ? "border-forest bg-forest text-cream" : "border-line bg-paper"
       }`}
     >
       {children}

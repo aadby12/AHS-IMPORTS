@@ -38,11 +38,11 @@ export function ProductPurchase({ product }: { product: Product }) {
         <AddToCartButton
           productId={product.id}
           quantity={quantity}
-          className="h-12 bg-ink text-xs uppercase tracking-[0.14em] text-ivory"
+          className="btn"
         />
         <WhatsAppLink
           lines={[{ name: product.name, quantity, slug: product.slug }]}
-          className="inline-flex h-12 items-center justify-center border border-ink px-3 text-center text-xs uppercase tracking-[0.14em]"
+          className="btn-line"
         >
           WhatsApp {contact ? contact.name : ""}
         </WhatsAppLink>

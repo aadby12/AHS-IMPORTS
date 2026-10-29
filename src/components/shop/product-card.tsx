@@ -2,7 +2,6 @@ import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { PriceLabel } from "@/components/shop/price-label";
 import { WhatsAppLink } from "@/components/shop/whatsapp-link";
 import { getCategory } from "@/data/categories";
-import { availabilityLabel } from "@/lib/format";
 import type { Product } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,41 +11,43 @@ export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
 
   return (
-    <article className="flex flex-col">
-      <Link href={`/product/${product.slug}`} className="group block">
-        <div className="relative aspect-[4/5] overflow-hidden bg-sand">
+    <article className="flex h-full flex-col">
+      <Link href={`/product/${product.slug}`} aria-label={`View ${product.name}`} className="group relative block overflow-hidden rounded-2xl bg-sand">
+        <div className="relative aspect-[4/5]">
           <Image
             src={image.src}
             alt={image.alt}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-contain p-4 motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.03]"
+            sizes="(max-width: 640px) 45vw, 22vw"
+            className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <h3 className="mt-4 font-display text-2xl leading-none">{product.name}</h3>
+        <span className="absolute top-3 left-3 rounded-full bg-[#e39b2b] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white uppercase">
+          Preorder
+        </span>
       </Link>
-      <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-stone">
-        {category?.name ?? product.category}
-        {product.illustrative ? " · Illustrative" : ""}
-      </p>
-      <p className="mt-2 text-sm leading-relaxed text-stone">{product.shortDescription}</p>
-      <div className="mt-3">
-        <PriceLabel product={product} />
-      </div>
-      <p className="mt-3 text-xs uppercase tracking-[0.16em]">
-        {availabilityLabel(product.availabilityStatus)}
-      </p>
-      <div className="mt-4 grid grid-cols-2 gap-2">
+      <div className="mt-3 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-xs text-stone">{category?.name}</p>
+          <h3 className="mt-1 text-sm font-semibold leading-5">
+            <Link href={`/product/${product.slug}`}>{product.name}</Link>
+          </h3>
+          <div className="mt-1">
+            <PriceLabel product={product} />
+          </div>
+          {product.illustrative ? <p className="mt-1 text-[11px] text-stone">Illustrative sample</p> : null}
+          <WhatsAppLink
+            lines={[{ name: product.name, quantity: 1, slug: product.slug }]}
+            className="mt-1 inline-block text-xs text-forest underline underline-offset-4"
+          >
+            WhatsApp
+          </WhatsAppLink>
+        </div>
         <AddToCartButton
           productId={product.id}
-          className="h-11 bg-ink px-3 text-xs uppercase tracking-[0.14em] text-ivory"
+          iconOnly
+          className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest text-sm text-cream"
         />
-        <WhatsAppLink
-          lines={[{ name: product.name, quantity: 1, slug: product.slug }]}
-          className="inline-flex h-11 items-center justify-center border border-ink px-3 text-center text-xs uppercase tracking-[0.14em]"
-        >
-          WhatsApp
-        </WhatsAppLink>
       </div>
     </article>
   );

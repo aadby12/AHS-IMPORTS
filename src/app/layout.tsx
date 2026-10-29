@@ -5,20 +5,20 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { business } from "@/lib/business";
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { Great_Vibes, Outfit } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-outfit",
 });
 
-const display = Cormorant_Garamond({
+const script = Great_Vibes({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  weight: "400",
+  variable: "--font-great-vibes",
 });
 
 export const metadata: Metadata = {
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <html lang="en" className={`${outfit.variable} ${display.variable} h-full antialiased`}>
+    <html lang="en" className={`${outfit.variable} ${script.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"

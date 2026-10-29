@@ -26,7 +26,7 @@ export function CartReview() {
           Opening WhatsApp does not place an order.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link href="/shop" className="inline-flex h-12 items-center justify-center bg-ink px-5 text-sm uppercase tracking-[0.14em] text-ivory">
+          <Link href="/shop" className="btn">
             Explore the collection
           </Link>
           <WhatsAppLink
@@ -142,7 +142,7 @@ export function CartReview() {
             quantity: line.quantity,
             slug: line.product.slug,
           }))}
-          className="mt-6 inline-flex h-12 w-full items-center justify-center bg-ink px-4 text-center text-sm uppercase tracking-[0.14em] text-ivory"
+          className="btn mt-6 w-full"
         >
           Continue on WhatsApp
         </WhatsAppLink>
