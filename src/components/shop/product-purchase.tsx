@@ -1,7 +1,6 @@
 "use client";
 
 import { ContactSelect } from "@/components/cart/contact-select";
-import { useCart } from "@/components/cart/cart-provider";
 import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { QuantityInput } from "@/components/shop/quantity-input";
 import { WhatsAppLink } from "@/components/shop/whatsapp-link";
@@ -12,7 +11,6 @@ import { useState } from "react";
 
 export function ProductPurchase({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
-  const { contact } = useCart();
   const shipping = product.shippingNotes ?? business.shipping.summary;
 
   return (
@@ -38,13 +36,14 @@ export function ProductPurchase({ product }: { product: Product }) {
         <AddToCartButton
           productId={product.id}
           quantity={quantity}
+          label="Add to cart"
           className="btn"
         />
         <WhatsAppLink
           lines={[{ name: product.name, quantity, slug: product.slug }]}
           className="btn-line"
         >
-          WhatsApp {contact ? contact.name : ""}
+          Enquire about product
         </WhatsAppLink>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-stone">

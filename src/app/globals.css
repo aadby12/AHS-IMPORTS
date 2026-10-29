@@ -7,9 +7,9 @@
   --color-ivory: #f6f3ee;
   --color-paper: #fffcf8;
   --color-ink: #161513;
-  --color-forest: #1b3a30;
-  --color-forest-deep: #122820;
-  --color-navy: #101820;
+  --color-forest: #161513;
+  --color-forest-deep: #0c0b0a;
+  --color-navy: #161513;
   --color-tan: #c6aa78;
   --color-champagne: #a68456;
   --color-stone: #6b6560;
@@ -58,7 +58,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding-inline: 1.35rem;
+  padding-inline: 0.9rem;
   background: var(--color-forest);
   color: #f6f3ee;
   font-size: 0.78rem;
@@ -78,7 +78,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding-inline: 1.35rem;
+  padding-inline: 0.9rem;
   background: #f3e6c8;
   color: var(--color-ink);
   font-size: 0.78rem;
@@ -99,7 +99,7 @@ body {
   justify-content: center;
   border: 1px solid #cfc6ba;
   border-radius: 999px;
-  padding-inline: 1.35rem;
+  padding-inline: 0.9rem;
   background: #fff;
   color: var(--color-ink);
   font-size: 0.78rem;

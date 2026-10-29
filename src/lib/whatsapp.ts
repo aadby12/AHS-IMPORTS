@@ -17,6 +17,14 @@ export function normalizeGhanaNumber(input: string): string | null {
   return null;
 }
 
+function formatLine(line: EnquiryLine, origin: string, index?: number) {
+  const title = index == null ? `Product: ${line.name}` : `${index}. ${line.name}`;
+  const rows = [title, `Quantity: ${line.quantity}`];
+  if (line.variantName) rows.push(`Variant: ${line.variantName}`);
+  rows.push(`${origin}/product/${line.slug}`);
+  return rows.join("\n");
+}
+
 export function buildEnquiryMessage(lines: EnquiryLine[], siteUrl: string) {
   const origin = siteUrl.replace(/\/$/, "");
 
@@ -24,24 +32,29 @@ export function buildEnquiryMessage(lines: EnquiryLine[], siteUrl: string) {
     return [
       "Hello AHS Imports, I would like to enquire about products available on preorder.",
       "",
-      "Please confirm the current prices, availability, and preorder details. Thank you.",
+      "Please confirm availability, current prices, and the next steps for placing a preorder. Thank you.",
     ].join("\n");
   }
 
-  const items = lines
-    .map((line, index) => {
-      const variant = line.variantName ? ` — ${line.variantName}` : "";
-      const link = `${origin}/product/${line.slug}`;
-      return `${index + 1}. ${line.name}${variant} — Quantity: ${line.quantity}\n${link}`;
-    })
-    .join("\n\n");
+  if (lines.length === 1) {
+    return [
+      "Hello AHS Imports! I'm interested in ordering the following product:",
+      "",
+      formatLine(lines[0], origin),
+      "",
+      "Please confirm availability, current pricing, and the next steps for placing a preorder. Thank you.",
+    ].join("\n");
+  }
+
+  const items = lines.map((line, index) => formatLine(line, origin, index + 1)).join("\n\n");
 
   return [
-    "Hello AHS Imports, I would like to enquire about the following items:",
+    "Hello AHS Imports! I'd like to enquire about placing a preorder for these items:",
     "",
     items,
     "",
-    "Please confirm the current prices, availability, and preorder details. Thank you.",
+    "Please confirm availability, current prices, the total cost, delivery arrangements, and the next steps for placing the order.",
+    "Sending this message does not confirm the order. Thank you!",
   ].join("\n");
 }
 

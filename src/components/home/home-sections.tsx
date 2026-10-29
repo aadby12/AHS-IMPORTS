@@ -21,18 +21,19 @@ const socialImages = [
 
 export function CategorySection() {
   return (
-    <section id="categories" className="bg-white py-14">
+    <section id="categories" className="bg-white py-16">
       <div className="shell">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-[11px] font-semibold tracking-[0.18em] text-forest uppercase">Shop by category</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink/80">Find exactly what you need</h2>
-          </div>
-          <Link href="/shop" className="shrink-0 text-sm text-forest">
-            Browse the collection →
+        <div className="max-w-2xl">
+          <p className="text-[11px] font-semibold tracking-[0.18em] uppercase">Shop by category</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Find exactly what you need</h2>
+          <p className="mt-3 text-sm leading-6 text-stone">
+            Explore our collections and discover products for everyday living.
+          </p>
+          <Link href="/shop" className="mt-4 inline-flex text-sm underline underline-offset-4">
+            Browse all categories →
           </Link>
         </div>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3">
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`} className="group">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-sand">
@@ -40,11 +41,11 @@ export function CategorySection() {
                   src={category.image}
                   alt={category.imageAlt}
                   fill
-                  sizes="(max-width: 640px) 45vw, 16vw"
+                  sizes="(max-width: 640px) 45vw, 30vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="mt-3 text-center text-sm font-medium">{category.name}</h3>
+              <h3 className="mt-3 text-center text-sm font-medium group-hover:underline group-hover:underline-offset-4">{category.name}</h3>
             </Link>
           ))}
         </div>
@@ -69,7 +70,7 @@ export function FeaturedSection() {
           </Link>
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-stone">
-          These names and pictures are illustrative samples, not confirmed inventory. An illustrative price is not a quotation.
+          Demo catalogue: product images and prices are illustrative and are not confirmed inventory or quotations.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {products.map((product) => (
@@ -83,7 +84,7 @@ export function FeaturedSection() {
 
 export function PreorderSection() {
   return (
-    <section className="bg-[#f3faf6] py-14">
+    <section className="bg-sand py-14">
       <div className="shell">
         <h2 className="text-3xl font-semibold tracking-tight">Your next find, made simple.</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-stone">{business.shipping.summary}</p>

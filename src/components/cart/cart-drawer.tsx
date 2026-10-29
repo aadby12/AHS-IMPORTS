@@ -2,13 +2,15 @@
 
 import { useCart } from "@/components/cart/cart-provider";
 import { PriceLabel } from "@/components/shop/price-label";
+import { QuantityInput } from "@/components/shop/quantity-input";
+import { WhatsAppLink } from "@/components/shop/whatsapp-link";
 import { summarizeCart } from "@/lib/cart-math";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export function CartDrawer() {
-  const { drawerOpen, setDrawerOpen, resolved, count, removeItem } = useCart();
+  const { drawerOpen, setDrawerOpen, resolved, count, removeItem, setQuantity } = useCart();
   const closeRef = useRef<HTMLButtonElement>(null);
   const summary = summarizeCart(
     resolved.map((line) => ({
@@ -59,9 +61,14 @@ export function CartDrawer() {
         </div>
         <div className="flex-1 overflow-y-auto px-5 py-5">
           {resolved.length === 0 ? (
-            <p className="text-sm leading-relaxed text-stone">
-              Your bag is empty. Adding a sample does not place an order.
-            </p>
+            <div>
+              <p className="text-sm leading-relaxed text-stone">
+                Your bag is empty. Adding a product prepares an enquiry. It does not place an order.
+              </p>
+              <Link href="/shop" className="btn mt-6" onClick={() => setDrawerOpen(false)}>
+                Continue shopping
+              </Link>
+            </div>
           ) : (
             <ul className="grid gap-5">
               {resolved.map((line) => (
@@ -79,8 +86,16 @@ export function CartDrawer() {
                     <Link href={`/product/${line.product.slug}`} className="font-medium" onClick={() => setDrawerOpen(false)}>
                       {line.product.name}
                     </Link>
-                    <p className="mt-1 text-sm text-stone">Quantity {line.quantity}</p>
-                    <PriceLabel product={line.product} />
+                    <div className="mt-1">
+                      <PriceLabel product={line.product} compact />
+                    </div>
+                    <div className="mt-3">
+                      <QuantityInput
+                        label={line.product.name}
+                        value={line.quantity}
+                        onChange={(quantity) => setQuantity(line.product.id, quantity)}
+                      />
+                    </div>
                     <button
                       type="button"
                       className="mt-2 text-xs uppercase tracking-[0.14em] underline"
@@ -100,15 +115,33 @@ export function CartDrawer() {
             </p>
           ) : null}
         </div>
-        <div className="border-t border-line px-5 py-4">
-          <Link
-            href="/cart"
-            onClick={() => setDrawerOpen(false)}
-            className="btn w-full"
-          >
-            Review enquiry
-          </Link>
-        </div>
+        {resolved.length > 0 ? (
+          <div className="grid gap-3 border-t border-line px-5 py-4">
+            <WhatsAppLink
+              lines={resolved.map((line) => ({
+                name: line.product.name,
+                quantity: line.quantity,
+                slug: line.product.slug,
+              }))}
+              className="btn w-full"
+            >
+              Continue order on WhatsApp
+            </WhatsAppLink>
+            <Link href="/cart" onClick={() => setDrawerOpen(false)} className="btn-line w-full">
+              Review enquiry
+            </Link>
+            <Link
+              href="/shop"
+              onClick={() => setDrawerOpen(false)}
+              className="text-center text-sm underline underline-offset-4"
+            >
+              Continue shopping
+            </Link>
+            <p className="text-xs leading-5 text-stone">
+              WhatsApp opens a message for you to review and send. Nothing is ordered until AHS Imports confirms availability, price, and payment.
+            </p>
+          </div>
+        ) : null}
       </aside>
     </div>
   );

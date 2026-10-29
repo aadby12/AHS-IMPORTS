@@ -22,15 +22,30 @@ const message = buildEnquiryMessage(
   [{ name: "Desk fan", quantity: 2, slug: "desk-fan" }],
   "http://localhost:3000",
 );
-assert.match(message, /1\. Desk fan — Quantity: 2/);
+assert.match(message, /Product: Desk fan/);
+assert.match(message, /Quantity: 2/);
 assert.match(message, /http:\/\/localhost:3000\/product\/desk-fan/);
-assert.match(message, /confirm the current prices/i);
+assert.match(message, /current pricing/i);
+assert.doesNotMatch(message, /order has been (sent|confirmed|placed)/i);
 
 const url = whatsAppUrl("0543886636", message);
 assert.ok(url?.startsWith("https://wa.me/233543886636?text="));
 const decoded = decodeURIComponent(url!.split("text=")[1] ?? "");
 assert.match(decoded, /Desk fan/);
 assert.match(decoded, /Quantity: 2/);
+
+const cartMessage = buildEnquiryMessage(
+  [
+    { name: "Desk fan", quantity: 2, slug: "desk-fan" },
+    { name: "Hair dryer", quantity: 1, slug: "hair-dryer", variantName: "Silver" },
+  ],
+  "http://localhost:3000",
+);
+assert.match(cartMessage, /1\. Desk fan/);
+assert.match(cartMessage, /2\. Hair dryer/);
+assert.match(cartMessage, /Variant: Silver/);
+assert.match(cartMessage, /does not confirm the order/);
+assert.doesNotMatch(cartMessage, /GH₵|GHS|confirmed total/i);
 
 const empty = buildEnquiryMessage([], "http://localhost:3000");
 assert.match(empty, /enquire about products/i);

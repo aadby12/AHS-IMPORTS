@@ -1,0 +1,13 @@
+---
+description: Publish AHS Imports to Vercel after meaningful site changes
+alwaysApply: true
+---
+
+# Publish AHS Imports
+
+After finishing meaningful website changes, commit them and push to `origin/main` so Vercel updates https://ahs-imports.vercel.app. Do this by default unless the user says not to deploy.
+
+- Never commit secrets, `.env`, or `.env.local`.
+- Do not change git config. If a commit identity is required, pass it only for that command.
+- Prefer `git push origin HEAD`. Do not force-push.
+- Confirm the live homepage reflects the change before saying production is updated.

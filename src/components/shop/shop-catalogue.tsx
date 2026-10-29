@@ -23,8 +23,7 @@ export function ShopCatalogue({
   return (
     <div className="shell py-10 md:py-14">
       <p className="max-w-2xl text-sm leading-relaxed text-stone">
-        These are illustrative samples for the demo, not confirmed AHS Imports inventory.
-        Prices marked illustrative are not quotations.
+        Demo catalogue: product images and prices are illustrative and are not confirmed inventory or quotations.
       </p>
 
       <form action={action} className="mt-8 flex flex-col gap-3 sm:flex-row" key={`${q}-${sort}`}>

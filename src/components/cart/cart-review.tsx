@@ -70,12 +70,9 @@ export function CartReview() {
                     <Link href={`/product/${line.product.slug}`} className="font-display text-3xl leading-none">
                       {line.product.name}
                     </Link>
-                    <p className="mt-2 text-sm text-stone">
-                      {line.product.illustrative ? "Illustrative sample · " : ""}
-                      Preorder
-                    </p>
+                    <p className="mt-2 text-sm text-stone">Preorder</p>
                   </div>
-                  <PriceLabel product={line.product} />
+                  <PriceLabel product={line.product} compact />
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-4">
                   <QuantityInput
@@ -144,8 +141,14 @@ export function CartReview() {
           }))}
           className="btn mt-6 w-full"
         >
-          Continue on WhatsApp
+          Continue order on WhatsApp
         </WhatsAppLink>
+        <p className="mt-3 text-xs leading-5 text-stone">
+          This opens WhatsApp with your selection. The message is not sent, and the preorder is not confirmed, until you send it and AHS Imports replies.
+        </p>
+        <Link href="/shop" className="mt-4 inline-flex text-sm underline underline-offset-4">
+          Continue shopping
+        </Link>
       </aside>
     </div>
   );
