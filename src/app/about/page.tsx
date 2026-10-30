@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AHS Imports is a Ghana-based preorder business for home appliances, fashion, kitchen essentials, kids' finds, baby items, and more.",
+    "AHS Imports brings everyday product categories together so customers can browse and send a preorder enquiry.",
 };
 
 export default function AboutPage() {
@@ -17,11 +17,10 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-[1180px] gap-10 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-2 lg:items-end">
           <div>
             <p className="text-[11px] uppercase tracking-[0.28em] text-stone">About</p>
-            <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">AHS Imports</h1>
+            <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">About AHS Imports</h1>
           </div>
           <p className="max-w-xl text-base leading-relaxed text-stone">
-            A convenient place to discover products across several categories, then prepare a
-            preorder enquiry.
+            AHS Imports brings together a range of everyday product categories in one catalogue. From home and kitchen essentials to fashion, children&apos;s products, baby items, and other useful finds, customers can explore products and send preorder enquiries directly to the business.
           </p>
         </div>
       </header>
@@ -31,50 +30,37 @@ export default function AboutPage() {
           <div className="relative aspect-[4/5] bg-sand">
             <Image
               src="/images/portrait-woman.jpg"
-              alt="Illustrative portrait. This person is not identified as AHS Imports staff or a customer."
+              alt="Portrait used as a visual example. This person is not identified as AHS Imports staff or a customer."
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover"
             />
           </div>
           <figcaption className="mt-3 text-xs leading-relaxed text-stone">
-            Illustrative portrait. Not a photograph of the founder, staff, or a named customer.
+            Example portrait. Not a photograph of the founder, staff, or a named customer.
           </figcaption>
         </figure>
         <div className="lg:col-span-7 lg:pt-6">
-          <p className="text-lg leading-relaxed">
-            {business.shortDescription} The public profile also describes the work as import
-            and logistics between China and Ghana.
+          <h2 className="font-display text-4xl">A convenient way to discover products</h2>
+          <p className="mt-5 leading-relaxed text-stone">
+            Our catalogue helps customers browse different collections, select the items they are interested in, and prepare an enquiry in one place. Before proceeding, customers can confirm the product details, pricing, payment instructions, and expected shipping timeline directly with AHS Imports.
+          </p>
+          <h2 className="mt-10 font-display text-4xl">Built around clear communication</h2>
+          <p className="mt-5 leading-relaxed text-stone">
+            We want customers to know what they are enquiring about and what needs to be confirmed before they proceed. Browse the catalogue, prepare your selection, and speak with AHS Imports about the next steps.
           </p>
           <p className="mt-5 leading-relaxed text-stone">
-            Customers can look through categories, keep a selection in the shopping bag, and
-            send that selection to an ordering contact. Prices, availability, and payment
-            instructions are confirmed in that conversation. The bag does not place an order
-            on its own.
+            The public profile lists {business.locationLabel}. This website does not publish a street address, opening hours, or a shop you can visit.
           </p>
-          <p className="mt-5 leading-relaxed text-stone">
-            The public Beacons profile lists {business.locationLabel}. This website does not
-            publish a street address, opening hours, or a claim that a shop can be visited.
-          </p>
-          <figure className="mt-10">
-            <Image
-              src="/brand/logo.webp"
-              alt="AHS Imports logo from the public Beacons profile"
-              width={160}
-              height={160}
-              className="h-36 w-36"
-            />
-            <figcaption className="mt-3 max-w-sm text-xs leading-relaxed text-stone">
-              Logo published on the AHS Imports Beacons profile. The wordmark beside it in the
-              header is set in type so the name stays readable at small sizes.
-            </figcaption>
-          </figure>
+          <Link href="/shop" className="btn mt-8">
+            Browse the catalogue
+          </Link>
         </div>
       </div>
 
       <section className="border-t border-line">
         <div className="mx-auto max-w-[1180px] px-5 py-14 md:px-8">
-          <h2 className="font-display text-4xl">What the range covers</h2>
+          <h2 className="font-display text-4xl">What you can browse</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <li key={category.slug} className="border-t border-line pt-4">
@@ -92,14 +78,14 @@ export default function AboutPage() {
         <div className="relative aspect-[16/8] min-h-64 bg-sand">
           <Image
             src="/images/home.jpg"
-            alt="Illustrative photograph of a furnished living room. Not an AHS Imports shop."
+            alt="Photograph of a furnished living room used as a visual example. Not an AHS Imports shop."
             fill
             sizes="100vw"
             className="object-cover"
           />
         </div>
         <figcaption className="mx-auto max-w-[1180px] px-5 py-4 text-xs text-stone md:px-8">
-          Illustrative interior photograph. Not a picture of an AHS Imports location.
+          Example interior photograph. Not a picture of an AHS Imports location.
         </figcaption>
       </figure>
     </>

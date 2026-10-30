@@ -3,6 +3,7 @@ import { categories, getCategory } from "@/data/categories";
 import { parseSort, queryProducts } from "@/lib/catalog";
 import { firstParam } from "@/lib/params";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -59,9 +60,11 @@ async function CategoryResults({
       <header className="border-b border-line">
         <div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-[1fr_16rem] lg:items-end">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-stone">Category</p>
-            <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">{category.name}</h1>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-stone">{category.description}</p>
+            <p className="text-[11px] uppercase tracking-[0.28em] text-stone">
+              <Link href="/shop" className="underline underline-offset-4">All categories</Link>
+            </p>
+            <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">{category.pageTitle}</h1>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-stone">{category.intro}</p>
           </div>
         </div>
       </header>

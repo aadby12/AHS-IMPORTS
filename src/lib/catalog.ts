@@ -6,8 +6,6 @@ export const sortOptions: { id: SortKey; label: string }[] = [
   { id: "featured", label: "Featured" },
   { id: "name-asc", label: "Name A–Z" },
   { id: "name-desc", label: "Name Z–A" },
-  { id: "price-asc", label: "Illustrative price, low to high" },
-  { id: "price-desc", label: "Illustrative price, high to low" },
 ];
 
 export function parseSort(value: string | undefined): SortKey {
@@ -74,13 +72,9 @@ export function queryProducts(options: {
 }
 
 export function relatedProducts(product: Product, limit = 4) {
-  const sameCategory = products.filter(
-    (item) => item.category === product.category && item.id !== product.id,
-  );
-  const featured = products.filter(
-    (item) => item.id !== product.id && !sameCategory.includes(item) && item.featured,
-  );
-  return [...sameCategory, ...featured].slice(0, limit);
+  return products
+    .filter((item) => item.category === product.category && item.id !== product.id)
+    .slice(0, limit);
 }
 
 export function shopHref(options: {

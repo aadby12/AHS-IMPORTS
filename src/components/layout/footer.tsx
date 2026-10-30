@@ -16,7 +16,7 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-            {business.shortDescription}
+            Discover home, kitchen, fashion, family, and everyday finds through AHS Imports. Browse the catalogue and enquire to confirm the details of your next preorder.
           </p>
           <p className="mt-4 text-xs tracking-[0.16em] text-white/50 uppercase">{business.tagline}</p>
         </div>
@@ -35,7 +35,7 @@ export function Footer() {
         <div className="md:col-span-3">
           <h2 className="text-[11px] font-semibold tracking-[0.18em] text-white/50 uppercase">Shopping</h2>
           <ul className="mt-4 grid gap-2 text-sm">
-            <li><Link href="/shop">Shop all</Link></li>
+            <li><Link href="/shop">Explore products</Link></li>
             <li><Link href="/how-it-works">Preorder guide</Link></li>
             <li><Link href="/cart">Shopping bag</Link></li>
             <li><Link href="/about">About</Link></li>
@@ -64,8 +64,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="shell flex flex-col gap-3 py-5 text-xs leading-relaxed text-white/60 md:flex-row md:items-end md:justify-between">
           <p className="max-w-2xl">
-            {business.demo.notice} Returns, delivery fees, and shop hours are confirmed
-            directly with AHS Imports.
+            {business.demo.notice} Delivery fees and other terms are confirmed directly with AHS Imports.
           </p>
           {business.credit.url ? (
             <a href={business.credit.url} className="shrink-0 text-right md:text-right">

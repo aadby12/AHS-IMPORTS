@@ -1,13 +1,13 @@
 import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { PriceLabel } from "@/components/shop/price-label";
-import { WhatsAppLink } from "@/components/shop/whatsapp-link";
+import { getCategory } from "@/data/categories";
 import type { Product } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
-  const needsEnquiry = product.priceStatus === "enquiry" || product.price == null;
+  const category = getCategory(product.category);
 
   return (
     <article className="flex h-full flex-col">
@@ -23,34 +23,19 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
       </Link>
       <div className="mt-4 flex flex-1 flex-col">
-        <h3 className="text-sm font-semibold leading-5">
+        {category ? <p className="text-xs text-stone">{category.name}</p> : null}
+        <h3 className="mt-1 text-sm font-semibold leading-5">
           <Link href={`/product/${product.slug}`} className="hover:underline hover:underline-offset-4">
             {product.name}
           </Link>
         </h3>
+        <p className="mt-2 line-clamp-2 text-sm leading-5 text-stone">{product.shortDescription}</p>
         <div className="mt-2">
           <PriceLabel product={product} compact />
         </div>
-        {product.preorder ? <p className="mt-1 text-xs text-stone">Preorder</p> : null}
-        <div className="mt-4 grid gap-2">
-          {needsEnquiry ? (
-            <WhatsAppLink
-              lines={[{ name: product.name, quantity: 1, slug: product.slug }]}
-              className="btn w-full"
-            >
-              Enquire about product
-            </WhatsAppLink>
-          ) : (
-            <AddToCartButton productId={product.id} label="Add to cart" showIcon={false} className="btn w-full" />
-          )}
-          {needsEnquiry ? (
-            <AddToCartButton
-              productId={product.id}
-              label="Add to cart"
-              plain
-              className="h-11 text-sm underline underline-offset-4"
-            />
-          ) : null}
+        {product.preorder ? <p className="mt-1 text-xs text-stone">Preorder enquiry</p> : null}
+        <div className="mt-4">
+          <AddToCartButton productId={product.id} label="Add to bag" showIcon={false} className="btn w-full" />
         </div>
       </div>
     </article>

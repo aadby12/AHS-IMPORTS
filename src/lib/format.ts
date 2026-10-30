@@ -32,17 +32,9 @@ export function pricePresentation(input: {
     };
   }
 
-  if (input.priceStatus === "illustrative" && typeof input.price === "number") {
-    return {
-      primary: formatMoney(input.price, input.currency),
-      secondary: "Illustrative demo price",
-      confirmed: false,
-    };
-  }
-
   return {
     primary: "Price on enquiry",
-    secondary: "Confirmed with AHS Imports",
+    secondary: "Final price is confirmed before you pay",
     confirmed: false,
   };
 }

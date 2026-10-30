@@ -53,7 +53,7 @@ export function CartDrawer() {
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 id="bag-title" className="font-display text-3xl">
-            Bag{count > 0 ? ` · ${count}` : ""}
+            Your bag{count > 0 ? ` · ${count}` : ""}
           </h2>
           <button ref={closeRef} type="button" className="h-11 px-3 text-sm" onClick={() => setDrawerOpen(false)}>
             Close
@@ -62,11 +62,12 @@ export function CartDrawer() {
         <div className="flex-1 overflow-y-auto px-5 py-5">
           {resolved.length === 0 ? (
             <div>
-              <p className="text-sm leading-relaxed text-stone">
-                Your bag is empty. Adding a product prepares an enquiry. It does not place an order.
+              <p className="text-lg">Your bag is empty.</p>
+              <p className="mt-2 text-sm leading-relaxed text-stone">
+                Explore the catalogue and add the products you would like to enquire about.
               </p>
               <Link href="/shop" className="btn mt-6" onClick={() => setDrawerOpen(false)}>
-                Continue shopping
+                Browse products
               </Link>
             </div>
           ) : (
@@ -101,7 +102,7 @@ export function CartDrawer() {
                       className="mt-2 text-xs uppercase tracking-[0.14em] underline"
                       onClick={() => removeItem(line.product.id)}
                     >
-                      Remove
+                      Remove item
                     </button>
                   </div>
                 </li>
@@ -110,8 +111,7 @@ export function CartDrawer() {
           )}
           {summary.needsConfirmation ? (
             <p className="mt-6 text-sm leading-relaxed text-stone">
-              Some prices require confirmation. Send your selection to AHS Imports for an
-              order quotation.
+              Final pricing will be confirmed by AHS Imports.
             </p>
           ) : null}
         </div>
@@ -125,17 +125,17 @@ export function CartDrawer() {
               }))}
               className="btn w-full"
             >
-              Continue order on WhatsApp
+              Send enquiry on WhatsApp
             </WhatsAppLink>
             <Link href="/cart" onClick={() => setDrawerOpen(false)} className="btn-line w-full">
-              Review enquiry
+              Review your bag
             </Link>
             <Link
               href="/shop"
               onClick={() => setDrawerOpen(false)}
               className="text-center text-sm underline underline-offset-4"
             >
-              Continue shopping
+              Browse products
             </Link>
             <p className="text-xs leading-5 text-stone">
               WhatsApp opens a message for you to review and send. Nothing is ordered until AHS Imports confirms availability, price, and payment.

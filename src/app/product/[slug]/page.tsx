@@ -64,19 +64,15 @@ async function ProductResult({ params }: { params: Promise<{ slug: string }> }) 
       <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-16">
         <ProductGallery images={product.images} />
         <div>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-stone">
-            {category?.name}
-            {product.illustrative ? " · Illustrative sample" : ""}
-          </p>
+          <p className="text-[11px] uppercase tracking-[0.2em] text-stone">{category?.name}</p>
           <h1 className="mt-3 font-display text-5xl leading-none md:text-6xl">{product.name}</h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed">{product.description}</p>
           <div className="mt-6">
             <PriceLabel product={product} />
           </div>
-          {product.illustrative ? (
+          {product.preorder ? (
             <p className="mt-4 border-t border-line pt-4 text-sm leading-relaxed text-stone">
-              This is sample catalogue content for the demonstration. It is not confirmed AHS
-              Imports inventory, and an illustrative price is not a quotation.
+              This item is listed for preorder enquiry. Please confirm availability, final pricing, and expected arrival details with AHS Imports before making payment.
             </p>
           ) : null}
           <div className="mt-8">
@@ -86,7 +82,7 @@ async function ProductResult({ params }: { params: Promise<{ slug: string }> }) 
       </div>
       {related.length > 0 ? (
         <section className="mt-16 border-t border-line pt-12">
-          <h2 className="font-display text-4xl">Related samples</h2>
+          <h2 className="font-display text-4xl">More from this category</h2>
           <div className="mt-8 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {related.map((item) => (
               <ProductCard key={item.id} product={item} />

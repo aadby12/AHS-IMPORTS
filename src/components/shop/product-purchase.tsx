@@ -4,19 +4,19 @@ import { ContactSelect } from "@/components/cart/contact-select";
 import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { QuantityInput } from "@/components/shop/quantity-input";
 import { WhatsAppLink } from "@/components/shop/whatsapp-link";
-import { business } from "@/lib/business";
 import { availabilityLabel } from "@/lib/format";
 import type { Product } from "@/lib/types";
 import { useState } from "react";
 
 export function ProductPurchase({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
-  const shipping = product.shippingNotes ?? business.shipping.summary;
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-[0.16em]">{availabilityLabel(product.availabilityStatus)}</p>
-      <p className="mt-4 text-sm leading-relaxed text-stone">{shipping}</p>
+      <p className="text-xs uppercase tracking-[0.16em]">{availabilityLabel(product.availabilityStatus)} enquiry</p>
+      <p className="mt-4 text-sm leading-relaxed text-stone">
+        Choose a quantity, add the item to your bag, or send a question about this product. Neither step places an order.
+      </p>
       {product.variants && product.variants.length > 0 ? (
         <ul className="mt-4 text-sm">
           {product.variants.map((variant) => (
@@ -25,8 +25,7 @@ export function ProductPurchase({ product }: { product: Product }) {
         </ul>
       ) : (
         <p className="mt-4 text-sm text-stone">
-          Options such as size or colour are confirmed with AHS Imports. None are listed here
-          because they are not known for this sample.
+          Size, colour, and other options are confirmed with AHS Imports. None are listed here because they have not been confirmed for this item.
         </p>
       )}
       <div className="mt-6">
@@ -36,19 +35,18 @@ export function ProductPurchase({ product }: { product: Product }) {
         <AddToCartButton
           productId={product.id}
           quantity={quantity}
-          label="Add to cart"
+          label="Add to bag"
           className="btn"
         />
         <WhatsAppLink
           lines={[{ name: product.name, quantity, slug: product.slug }]}
           className="btn-line"
         >
-          Enquire about product
+          Enquire about this item
         </WhatsAppLink>
       </div>
       <p className="mt-3 text-xs leading-relaxed text-stone">
-        Adding this sample to the bag does not place an order. WhatsApp opens a chat so the
-        business can confirm the details.
+        Adding this item to your bag does not place an order. WhatsApp opens a message for you to review and send.
       </p>
       <div className="mt-8">
         <ContactSelect />

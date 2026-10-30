@@ -25,7 +25,7 @@ const message = buildEnquiryMessage(
 assert.match(message, /Product: Desk fan/);
 assert.match(message, /Quantity: 2/);
 assert.match(message, /http:\/\/localhost:3000\/product\/desk-fan/);
-assert.match(message, /current pricing/i);
+assert.match(message, /final pricing/i);
 assert.doesNotMatch(message, /order has been (sent|confirmed|placed)/i);
 
 const url = whatsAppUrl("0543886636", message);

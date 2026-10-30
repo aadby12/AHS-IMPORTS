@@ -70,20 +70,20 @@ export function HeroSlider() {
           AHS Imports · Preorder
         </p>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-tight sm:text-6xl">
-          Home, kitchen, fashion, and family finds. All in one place.
+          Everyday finds worth discovering
         </h1>
         <p className="mt-4 max-w-xl text-sm leading-6 text-white/90 sm:text-base">
-          Browse the catalogue and send a preorder enquiry. Prices are confirmed with AHS Imports before you pay.
+          Explore home essentials, kitchen favourites, fashion, and family finds. Choose what you love and send AHS Imports a preorder enquiry to confirm the details before payment.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link href="/shop" className="btn">
-            Shop now
+            Explore products
           </Link>
           <Link
             href="/how-it-works"
             className="inline-flex h-12 items-center justify-center rounded-full border border-white px-5 text-xs font-semibold tracking-[0.08em] text-white uppercase"
           >
-            How it works
+            How preordering works
           </Link>
         </div>
         <div className="mt-8 flex items-center gap-2" role="tablist" aria-label="Featured categories">
@@ -103,7 +103,7 @@ export function HeroSlider() {
           </button>
         </div>
         <p className="mt-3 text-xs text-white/70">
-          Illustrative photos, not confirmed stock.{" "}
+          Photos are examples, not confirmed stock.{" "}
           <Link href={slide.href} className="underline underline-offset-4">
             {slide.label}
           </Link>

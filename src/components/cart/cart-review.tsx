@@ -22,12 +22,11 @@ export function CartReview() {
       <div className="max-w-xl">
         <p className="text-lg">Your bag is empty.</p>
         <p className="mt-3 text-sm leading-relaxed text-stone">
-          Add sample products from the collection, or send a general preorder question.
-          Opening WhatsApp does not place an order.
+          Explore the catalogue and add the products you would like to enquire about. Opening WhatsApp does not place an order.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link href="/shop" className="btn">
-            Explore the collection
+            Browse products
           </Link>
           <WhatsAppLink
             lines={[]}
@@ -47,7 +46,6 @@ export function CartReview() {
       priceStatus: line.product.priceStatus,
     })),
   );
-  const hasIllustrative = resolved.some((line) => line.product.priceStatus === "illustrative");
 
   return (
     <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem]">
@@ -70,7 +68,7 @@ export function CartReview() {
                     <Link href={`/product/${line.product.slug}`} className="font-display text-3xl leading-none">
                       {line.product.name}
                     </Link>
-                    <p className="mt-2 text-sm text-stone">Preorder</p>
+                    <p className="mt-2 text-sm text-stone">Preorder enquiry</p>
                   </div>
                   <PriceLabel product={line.product} compact />
                 </div>
@@ -85,7 +83,7 @@ export function CartReview() {
                     className="text-xs uppercase tracking-[0.14em] underline"
                     onClick={() => removeItem(line.product.id)}
                   >
-                    Remove
+                    Remove item
                   </button>
                 </div>
               </div>
@@ -98,9 +96,9 @@ export function CartReview() {
       </div>
 
       <aside className="h-fit border border-line bg-paper p-5">
-        <h2 className="font-display text-3xl">Review enquiry</h2>
+        <h2 className="font-display text-3xl">Send your enquiry</h2>
         <p className="mt-3 text-sm leading-relaxed text-stone">
-          The next step is a WhatsApp enquiry with {contact?.name ?? "the ordering team"}.
+          The next step is a WhatsApp enquiry with {contact?.name ?? "AHS Imports"}.
           This does not place an order, confirm payment, or reserve the items.
         </p>
         <div className="mt-6">
@@ -112,15 +110,8 @@ export function CartReview() {
           ) : (
             <div className="space-y-3 text-sm leading-relaxed">
               <p>
-                Some prices require confirmation. Send your selection to AHS Imports for an
-                order quotation.
+                Final pricing will be confirmed by AHS Imports. No total is shown until every price is confirmed.
               </p>
-              {hasIllustrative ? (
-                <p className="text-stone">
-                  Figures marked illustrative are demo examples. They are not added into an
-                  order total.
-                </p>
-              ) : null}
             </div>
           )}
         </div>
@@ -130,7 +121,7 @@ export function CartReview() {
         <ol className="mt-6 list-decimal space-y-2 pl-4 text-sm leading-relaxed text-stone">
           <li>Check the items and quantities.</li>
           <li>Choose the ordering contact.</li>
-          <li>Continue on WhatsApp and wait for prices and availability to be confirmed.</li>
+          <li>Send the enquiry on WhatsApp and wait for availability and pricing to be confirmed.</li>
           <li>Pay only with instructions AHS Imports confirms after the enquiry.</li>
         </ol>
         <WhatsAppLink
@@ -141,13 +132,13 @@ export function CartReview() {
           }))}
           className="btn mt-6 w-full"
         >
-          Continue order on WhatsApp
+          Send enquiry on WhatsApp
         </WhatsAppLink>
         <p className="mt-3 text-xs leading-5 text-stone">
           This opens WhatsApp with your selection. The message is not sent, and the preorder is not confirmed, until you send it and AHS Imports replies.
         </p>
         <Link href="/shop" className="mt-4 inline-flex text-sm underline underline-offset-4">
-          Continue shopping
+          Browse products
         </Link>
       </aside>
     </div>

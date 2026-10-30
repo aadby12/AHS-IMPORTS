@@ -23,7 +23,7 @@ export function ShopCatalogue({
   return (
     <div className="shell py-10 md:py-14">
       <p className="max-w-2xl text-sm leading-relaxed text-stone">
-        Demo catalogue: product images and prices are illustrative and are not confirmed inventory or quotations.
+        Prices shown as “Price on enquiry” are not final. AHS Imports confirms availability and pricing before you pay.
       </p>
 
       <form action={action} className="mt-8 flex flex-col gap-3 sm:flex-row" key={`${q}-${sort}`}>
@@ -35,7 +35,7 @@ export function ShopCatalogue({
             id="catalogue-search"
             name="q"
             defaultValue={q}
-            placeholder="Search names and descriptions"
+            placeholder="Search products and categories..."
             className="h-12 w-full border border-line bg-paper px-4 text-sm outline-none focus:border-forest"
           />
         </div>
@@ -111,10 +111,13 @@ export function ShopCatalogue({
 
       {products.length === 0 ? (
         <div className="py-16">
-          <p className="font-display text-4xl">No products match.</p>
+          <p className="font-display text-4xl">No matching products found.</p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-stone">
-            Try another word, or clear the filters to see the full sample collection.
+            Try another search or browse our categories. You can also ask AHS Imports about an item you have in mind.
           </p>
+          <Link href="/contact" className="btn mt-6">
+            Ask about a product
+          </Link>
         </div>
       ) : (
         <div className="mt-10 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">

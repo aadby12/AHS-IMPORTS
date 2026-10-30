@@ -32,7 +32,7 @@ export function buildEnquiryMessage(lines: EnquiryLine[], siteUrl: string) {
     return [
       "Hello AHS Imports, I would like to enquire about products available on preorder.",
       "",
-      "Please confirm availability, current prices, and the next steps for placing a preorder. Thank you.",
+      "Please confirm availability, final pricing, and expected arrival details. Thank you.",
     ].join("\n");
   }
 
@@ -42,7 +42,7 @@ export function buildEnquiryMessage(lines: EnquiryLine[], siteUrl: string) {
       "",
       formatLine(lines[0], origin),
       "",
-      "Please confirm availability, current pricing, and the next steps for placing a preorder. Thank you.",
+      "Please confirm availability, final pricing, and expected arrival details before I proceed. Thank you.",
     ].join("\n");
   }
 
@@ -53,7 +53,7 @@ export function buildEnquiryMessage(lines: EnquiryLine[], siteUrl: string) {
     "",
     items,
     "",
-    "Please confirm availability, current prices, the total cost, delivery arrangements, and the next steps for placing the order.",
+    "Please confirm availability, final pricing, and expected arrival details for this selection.",
     "Sending this message does not confirm the order. Thank you!",
   ].join("\n");
 }
@@ -65,7 +65,7 @@ export function buildCustomEnquiryMessage(input: { name?: string; note: string }
     "",
     input.note.trim(),
     "",
-    "Please confirm the current prices, availability, and preorder details. Thank you.",
+    "Please confirm availability, final pricing, and expected arrival details. Thank you.",
   ].join("\n");
 }
 

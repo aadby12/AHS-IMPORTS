@@ -53,7 +53,7 @@ export function EnquiryComposer() {
       </div>
       <div>
         <label htmlFor="enquiry-note" className="text-sm">
-          What would you like to ask?
+          Your message
         </label>
         <textarea
           id="enquiry-note"
@@ -75,7 +75,7 @@ export function EnquiryComposer() {
         </p>
       )}
       <button type="submit" className="btn">
-        Continue on WhatsApp
+        Send a WhatsApp enquiry
       </button>
       <p className="text-xs text-stone">No email address is published for this demo.</p>
       <p className="sr-only">{business.name}</p>

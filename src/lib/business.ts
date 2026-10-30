@@ -21,16 +21,16 @@ export const business = {
   locationLabel: "Adenta, Ghana",
   tagline: "China · Ghana · Import · Logistics · Global Trade",
   shortDescription:
-    "We sell home appliances, fashion items, kitchen essentials, kids' finds, baby items and more. Everything is available on preorder.",
+    "AHS Imports helps customers discover products across home, kitchen, fashion, children's items, baby essentials, and more through a convenient preorder process.",
   demo: {
     isDemo: true,
     notice:
-      "This is a demonstration website. It is not an officially approved AHS Imports storefront. Sample products are illustrative, and payment details are not shown as a live payment channel.",
+      "This is a demonstration website. It is not an officially approved AHS Imports storefront. Browse the catalogue, then confirm product details, pricing, and payment with AHS Imports before you proceed.",
   },
   shipping: {
-    estimate: "approximately two months",
+    estimate: "approximately two months after shipment",
     summary:
-      "Goods take approximately two months to arrive in Ghana. This is an estimate, not a guaranteed arrival date. The countdown starts when the goods are shipped, not when a customer places an enquiry or makes payment.",
+      "Current general estimate: approximately two months after shipment. Actual timing may vary. Confirm the expected timeline for your order directly with AHS Imports. This estimate starts when the goods are shipped, not when you browse, send an enquiry, or pay.",
   },
   contacts: [
     {

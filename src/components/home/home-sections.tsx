@@ -6,10 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 const steps = [
-  { number: "01", title: "Discover", body: "Find a product you want to order." },
-  { number: "02", title: "Send your request", body: "Add the item and quantity, then send the selection on WhatsApp." },
-  { number: "03", title: "Confirm", body: "AHS Imports confirms the product, the price, and how to pay." },
-  { number: "04", title: "Wait for arrival", body: "About two months after the goods are shipped, not after you pay." },
+  { number: "01", title: "Discover", body: "Browse the catalogue and choose the products you are interested in." },
+  { number: "02", title: "Prepare your enquiry", body: "Add your selected products and quantities to your bag." },
+  { number: "03", title: "Confirm the details", body: "Send your enquiry through WhatsApp so AHS Imports can confirm the product, price, availability, and payment instructions." },
+  { number: "04", title: "Follow your order", body: "Once the order and shipping details are agreed, follow the timeline confirmed by AHS Imports." },
+];
+
+const reasons = [
+  { title: "A variety of categories", body: "Explore products across home, kitchen, fashion, children's items, and more in one catalogue." },
+  { title: "A clear enquiry process", body: "Build a selection of products and send your request without having to describe every item from scratch." },
+  { title: "Direct communication", body: "Discuss your selected products and confirm the relevant details with AHS Imports." },
+  { title: "Clearer expectations", body: "Understand the preorder process and confirm pricing and shipping information before proceeding." },
 ];
 
 const socialImages = [
@@ -25,12 +32,12 @@ export function CategorySection() {
       <div className="shell">
         <div className="max-w-2xl">
           <p className="text-[11px] font-semibold tracking-[0.18em] uppercase">Shop by category</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Find exactly what you need</h2>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Find what you need</h2>
           <p className="mt-3 text-sm leading-6 text-stone">
-            Explore our collections and discover products for everyday living.
+            Browse our collections to discover practical finds for your home, kitchen, wardrobe, and family.
           </p>
           <Link href="/shop" className="mt-4 inline-flex text-sm underline underline-offset-4">
-            Browse all categories →
+            Explore all products →
           </Link>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3">
@@ -46,6 +53,7 @@ export function CategorySection() {
                 />
               </div>
               <h3 className="mt-3 text-center text-sm font-medium group-hover:underline group-hover:underline-offset-4">{category.name}</h3>
+              <p className="mt-1 text-center text-xs leading-5 text-stone">{category.description}</p>
             </Link>
           ))}
         </div>
@@ -63,14 +71,14 @@ export function FeaturedSection() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.18em] text-forest uppercase">The catalogue</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Sample finds</h2>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Discover the latest finds</h2>
           </div>
           <Link href="/shop" className="shrink-0 text-sm text-forest">
-            View all →
+            Explore all products →
           </Link>
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-stone">
-          Demo catalogue: product images and prices are illustrative and are not confirmed inventory or quotations.
+          Explore selected catalogue items and choose what you would like to preorder. Prices are confirmed with AHS Imports before you pay.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {products.map((product) => (
@@ -86,8 +94,10 @@ export function PreorderSection() {
   return (
     <section className="bg-sand py-14">
       <div className="shell">
-        <h2 className="text-3xl font-semibold tracking-tight">Your next find, made simple.</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-stone">{business.shipping.summary}</p>
+        <h2 className="text-3xl font-semibold tracking-tight">Your preorder, made simple</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-stone">
+          Find an item you like, send your selection, and let AHS Imports confirm the details before you proceed. Adding an item to your bag does not reserve it or complete a purchase.
+        </p>
         <ol className="mt-8 grid gap-6 md:grid-cols-4">
           {steps.map((step) => (
             <li key={step.number}>
@@ -97,6 +107,27 @@ export function PreorderSection() {
             </li>
           ))}
         </ol>
+        <Link href="/how-it-works" className="mt-8 inline-flex text-sm underline underline-offset-4">
+          Read the preorder guide
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export function ReasonsSection() {
+  return (
+    <section className="bg-white py-14">
+      <div className="shell">
+        <h2 className="max-w-xl text-3xl font-semibold tracking-tight">A simpler way to discover more</h2>
+        <ul className="mt-8 grid gap-8 sm:grid-cols-2">
+          {reasons.map((reason) => (
+            <li key={reason.title}>
+              <h3 className="font-semibold">{reason.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-stone">{reason.body}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -107,13 +138,13 @@ export function ClosingSection() {
     <section className="bg-white py-10">
       <div className="shell">
         <div className="rounded-[1.75rem] bg-forest px-6 py-12 text-center text-cream sm:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight">Prepare your next preorder.</h2>
+          <h2 className="text-3xl font-semibold tracking-tight">Found something you like?</h2>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-cream/80">
-            Explore the collection, keep a selection, and ask AHS Imports to confirm the price and the details.
+            Browse the catalogue, choose your favourites, and send AHS Imports an enquiry to confirm the details.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link href="/shop" className="btn-cream">
-              Start shopping
+              Start exploring
             </Link>
             <Link href="/how-it-works" className="inline-flex h-12 items-center rounded-full border border-cream/40 px-5 text-xs font-semibold tracking-[0.08em] uppercase">
               How it works
@@ -135,11 +166,11 @@ export function InstagramSection() {
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">More finds. More inspiration.</h2>
           </div>
           <a href={business.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-forest">
-            Visit {business.handle} →
+            Follow {business.handle} →
           </a>
         </div>
         <p className="mt-3 max-w-xl text-sm text-stone">
-          This page links to the profile. It does not recreate the feed or show follower counts. The pictures below are illustrative stand-ins.
+          Follow AHS Imports on Instagram for product discoveries and updates. The pictures below are examples, not a live feed.
         </p>
         <div className="mt-6 grid grid-cols-4 gap-3">
           {socialImages.map((image) => (

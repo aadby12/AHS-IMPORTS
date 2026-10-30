@@ -8,7 +8,7 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Browse illustrative sample products across home appliances, kitchen essentials, fashion, kids' finds, baby items, and more.",
+    "Browse home, kitchen, fashion, children's, and everyday finds, then build a preorder enquiry.",
 };
 
 export default function ShopPage({
@@ -25,9 +25,9 @@ export default function ShopPage({
       <header className="border-b border-line">
         <div className="shell py-12 md:py-16">
           <p className="eyebrow">The collection</p>
-          <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">Shop all</h1>
+          <h1 className="mt-3 font-display text-5xl leading-none md:text-7xl">Explore the collection</h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">
-            Browse sample products across the categories AHS Imports offers on preorder.
+            Browse our product categories, discover items that interest you, and build a selection for your next preorder enquiry.
           </p>
         </div>
       </header>

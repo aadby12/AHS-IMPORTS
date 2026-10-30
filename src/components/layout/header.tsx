@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/about", label: "About" },
@@ -100,6 +101,13 @@ export function Header() {
 
         <nav className="ml-8 hidden items-center gap-6 lg:flex" aria-label="Primary">
           <Link
+            href="/"
+            className={`text-sm ${pathname === "/" ? "font-semibold text-forest" : ""}`}
+            aria-current={pathname === "/" ? "page" : undefined}
+          >
+            Home
+          </Link>
+          <Link
             href="/shop"
             className={`text-sm ${pathname === "/shop" ? "font-semibold text-forest" : ""}`}
             aria-current={pathname === "/shop" ? "page" : undefined}
@@ -122,7 +130,7 @@ export function Header() {
               ))}
             </div>
           </details>
-          {links.slice(1).map((link) => (
+          {links.slice(2).map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -143,7 +151,7 @@ export function Header() {
             <input
               id="header-search"
               name="q"
-              placeholder="Search products"
+              placeholder="Search products and categories..."
               className="w-36 bg-transparent px-2 text-sm outline-none xl:w-48"
             />
           </form>
@@ -225,12 +233,12 @@ export function Header() {
               id="product-search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search the sample collection"
+              placeholder="Search products and categories..."
               className="h-14 w-full border-b border-ink bg-transparent text-2xl outline-none placeholder:text-stone"
             />
             <ul className="mt-6 divide-y divide-line">
               {results.length === 0 ? (
-                <li className="py-4 text-sm text-stone">No sample products match that search.</li>
+                <li className="py-4 text-sm text-stone">No matching products found. Try another search or browse our categories.</li>
               ) : (
                 results.map((product) => (
                   <li key={product.id}>

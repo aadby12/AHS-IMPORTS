@@ -5,6 +5,7 @@ import {
   FeaturedSection,
   InstagramSection,
   PreorderSection,
+  ReasonsSection,
 } from "@/components/home/home-sections";
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
       <CategorySection />
       <FeaturedSection />
       <PreorderSection />
+      <ReasonsSection />
       <ClosingSection />
       <InstagramSection />
     </>

@@ -1,31 +1,30 @@
 import type { Product } from "@/lib/types";
 
 /**
- * Illustrative catalogue for the demo. Every item is marked illustrative.
- * Replace this file with confirmed AHS Imports products when they are available.
- * Prices marked illustrative are not quotations.
+ * Demonstration catalogue. These items show how browsing and enquiries work.
+ * They are not confirmed AHS Imports stock, and no price is stored as final.
+ * Replace this file when the business supplies confirmed products.
  */
+const demo = {
+  price: null,
+  priceStatus: "enquiry" as const,
+  currency: "GHS" as const,
+  availabilityStatus: "preorder" as const,
+  preorder: true,
+  illustrative: true,
+};
+
 export const products: Product[] = [
   {
     id: "desk-fan",
     slug: "desk-fan",
     name: "Desk fan",
     category: "home-appliances",
-    shortDescription: "A tabletop fan for everyday rooms.",
+    shortDescription: "A tabletop fan for moving air in a room.",
     description:
-      "Illustrative sample of a tabletop fan. Blade size, speeds, and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/fan.jpg",
-        alt: "Illustrative photo of a cream and black tabletop fan.",
-      },
-    ],
-    price: 240,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A tabletop fan for everyday rooms. Blade size, speeds, and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/fan.jpg", alt: "Photo of a cream and black tabletop fan." }],
+    ...demo,
     featured: true,
   },
   {
@@ -35,19 +34,9 @@ export const products: Product[] = [
     category: "home-appliances",
     shortDescription: "A handheld dryer for home use.",
     description:
-      "Illustrative sample of a handheld hair dryer. Heat settings and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/dryer.jpg",
-        alt: "Illustrative photo of a silver handheld hair dryer.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A handheld hair dryer for home use. Heat settings and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/dryer.jpg", alt: "Photo of a silver handheld hair dryer." }],
+    ...demo,
     featured: false,
   },
   {
@@ -57,19 +46,9 @@ export const products: Product[] = [
     category: "kitchen-essentials",
     shortDescription: "A lidded enamel pot for everyday cooking.",
     description:
-      "Illustrative sample of a lidded enamel casserole. Capacity, colour, and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/board.jpg",
-        alt: "Illustrative photo of an orange enamel casserole on a kitchen counter.",
-      },
-    ],
-    price: 320,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A lidded enamel casserole for preparing everyday meals. Capacity, colour, and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/board.jpg", alt: "Photo of an orange enamel casserole on a kitchen counter." }],
+    ...demo,
     featured: true,
   },
   {
@@ -77,21 +56,11 @@ export const products: Product[] = [
     slug: "ceramic-cups",
     name: "Ceramic cups",
     category: "kitchen-essentials",
-    shortDescription: "A small set of speckled ceramic cups.",
+    shortDescription: "Ceramic cups for serving drinks.",
     description:
-      "Illustrative sample of ceramic cups and a canister. Piece count and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/bowls.jpg",
-        alt: "Illustrative photo of speckled ceramic cups and a canister.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "Ceramic cups for serving drinks at home. The number of pieces and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/bowls.jpg", alt: "Photo of speckled ceramic cups and a canister." }],
+    ...demo,
     featured: false,
   },
   {
@@ -99,21 +68,11 @@ export const products: Product[] = [
     slug: "ceramic-mug",
     name: "Ceramic mug",
     category: "kitchen-essentials",
-    shortDescription: "A simple ceramic mug for tea or coffee.",
+    shortDescription: "A ceramic mug for everyday drinks.",
     description:
-      "Illustrative sample of a ceramic mug. The current price is confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/mug.jpg",
-        alt: "Illustrative photo of a white ceramic mug.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A ceramic mug for everyday drinks. The current price is confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/mug.jpg", alt: "Photo of a white ceramic mug." }],
+    ...demo,
     featured: false,
   },
   {
@@ -121,21 +80,11 @@ export const products: Product[] = [
     slug: "heart-print-shirt",
     name: "Heart-print shirt",
     category: "fashion",
-    shortDescription: "A button-up shirt with a small heart print.",
+    shortDescription: "A printed button-up shirt for everyday wear.",
     description:
-      "Illustrative sample of a printed button-up shirt. Size, fabric, and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/shirt.jpg",
-        alt: "Illustrative photo of a blue heart-print button-up shirt.",
-      },
-    ],
-    price: 90,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A heart-print button-up shirt. Size, fabric, and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/shirt.jpg", alt: "Photo of a blue heart-print button-up shirt." }],
+    ...demo,
     featured: true,
   },
   {
@@ -143,21 +92,11 @@ export const products: Product[] = [
     slug: "colour-block-sneakers",
     name: "Colour-block sneakers",
     category: "fashion",
-    shortDescription: "Everyday sneakers with colour-block panels.",
+    shortDescription: "Colour-block sneakers for everyday wear.",
     description:
-      "Illustrative sample of colour-block sneakers. Sizes and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/shoes.jpg",
-        alt: "Illustrative photo of a pair of colour-block sneakers.",
-      },
-    ],
-    price: 180,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A pair of colour-block sneakers. Available sizes and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/shoes.jpg", alt: "Photo of a pair of colour-block sneakers." }],
+    ...demo,
     featured: true,
   },
   {
@@ -165,21 +104,11 @@ export const products: Product[] = [
     slug: "everyday-backpack",
     name: "Everyday backpack",
     category: "fashion",
-    shortDescription: "A dark backpack for daily carry.",
+    shortDescription: "A backpack for carrying everyday items.",
     description:
-      "Illustrative sample of an everyday backpack. Colour and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/backpack.jpg",
-        alt: "Illustrative photo of a black everyday backpack.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A backpack for everyday use. Colour and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/backpack.jpg", alt: "Photo of a black everyday backpack." }],
+    ...demo,
     featured: false,
   },
   {
@@ -187,21 +116,11 @@ export const products: Product[] = [
     slug: "number-blocks",
     name: "Number blocks",
     category: "kids-finds",
-    shortDescription: "Wooden blocks printed with numbers.",
+    shortDescription: "Wooden blocks printed with numbers, for play.",
     description:
-      "Illustrative sample of wooden number blocks. Set size and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/blocks-wood.jpg",
-        alt: "Illustrative photo of wooden blocks printed with numbers.",
-      },
-    ],
-    price: 70,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "Wooden blocks printed with numbers, for children's play. The set size and current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/blocks-wood.jpg", alt: "Photo of wooden blocks printed with numbers." }],
+    ...demo,
     featured: true,
   },
   {
@@ -209,21 +128,11 @@ export const products: Product[] = [
     slug: "shape-blocks",
     name: "Shape blocks",
     category: "kids-finds",
-    shortDescription: "Colourful wooden blocks in simple shapes.",
+    shortDescription: "Colourful wooden shape blocks for play.",
     description:
-      "Illustrative sample of wooden shape blocks. Set size and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/blocks-color.jpg",
-        alt: "Illustrative photo of colourful wooden shape blocks.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "Colourful wooden shape blocks for children's play. The set size and current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/blocks-color.jpg", alt: "Photo of colourful wooden shape blocks." }],
+    ...demo,
     featured: false,
   },
   {
@@ -231,21 +140,11 @@ export const products: Product[] = [
     slug: "knit-baby-blanket",
     name: "Knit baby blanket",
     category: "baby-items",
-    shortDescription: "A cable-knit blanket shown with a soft teddy.",
+    shortDescription: "A knit blanket for a baby.",
     description:
-      "Illustrative sample of a knit baby blanket, photographed with a teddy bear. Size and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/teddy.jpg",
-        alt: "Illustrative photo of a cream knit blanket beside a teddy bear.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A knit blanket for a baby. The photograph also shows a teddy bear; what is included, the size, and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/teddy.jpg", alt: "Photo of a cream knit blanket beside a teddy bear." }],
+    ...demo,
     featured: true,
   },
   {
@@ -253,21 +152,11 @@ export const products: Product[] = [
     slug: "floor-lamp",
     name: "Floor lamp",
     category: "more-finds",
-    shortDescription: "An adjustable lamp with a metal shade.",
+    shortDescription: "An adjustable lamp for a room.",
     description:
-      "Illustrative sample of an adjustable floor lamp. Finish and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/lamp.jpg",
-        alt: "Illustrative photo of a grey adjustable floor lamp.",
-      },
-    ],
-    price: 260,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "An adjustable floor lamp. Finish and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/lamp.jpg", alt: "Photo of a grey adjustable floor lamp." }],
+    ...demo,
     featured: true,
   },
   {
@@ -275,21 +164,11 @@ export const products: Product[] = [
     slug: "matte-bottle",
     name: "Matte bottle",
     category: "more-finds",
-    shortDescription: "A tall matte bottle for everyday drinks.",
+    shortDescription: "A bottle for carrying a drink.",
     description:
-      "Illustrative sample of a matte drink bottle. Capacity and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/water.jpg",
-        alt: "Illustrative photo of a matte green bottle.",
-      },
-    ],
-    price: null,
-    priceStatus: "enquiry",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A matte drink bottle. Capacity and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/water.jpg", alt: "Photo of a matte green bottle." }],
+    ...demo,
     featured: false,
   },
   {
@@ -297,21 +176,11 @@ export const products: Product[] = [
     slug: "laundry-basket",
     name: "Laundry basket",
     category: "more-finds",
-    shortDescription: "A plastic laundry basket for the home.",
+    shortDescription: "A basket for everyday laundry.",
     description:
-      "Illustrative sample of a laundry basket. Size and the current price are confirmed with AHS Imports during an order enquiry. This listing is not confirmed stock.",
-    images: [
-      {
-        src: "/images/laundry.jpg",
-        alt: "Illustrative photo of a pale blue laundry basket.",
-      },
-    ],
-    price: 60,
-    priceStatus: "illustrative",
-    currency: "GHS",
-    availabilityStatus: "preorder",
-    preorder: true,
-    illustrative: true,
+      "A laundry basket for everyday washing. Size and the current price are confirmed with AHS Imports when you enquire.",
+    images: [{ src: "/images/laundry.jpg", alt: "Photo of a pale blue laundry basket." }],
+    ...demo,
     featured: false,
   },
 ];

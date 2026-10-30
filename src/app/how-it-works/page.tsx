@@ -3,18 +3,41 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "How preorders work",
+  title: "How preordering works",
   description:
-    "How to send an AHS Imports preorder enquiry, what happens before payment, and how the shipping estimate is counted.",
+    "Choose products from the AHS Imports catalogue, send an enquiry, and confirm pricing and shipping before you proceed.",
 };
 
-const orderSteps = [
-  "Select the products and quantities you want.",
-  "Send your order enquiry by WhatsApp. An enquiry is not a confirmed order.",
-  "Confirm the product details and final amount with the business.",
-  "Use only the currently approved payment instructions supplied by AHS Imports.",
-  "Send payment confirmation to the same administrator.",
-  "Wait for confirmation that the payment has been verified.",
+const steps = [
+  {
+    title: "Browse the catalogue",
+    body: "Explore the categories and open the products you are interested in. Review the available product information before adding items to your bag.",
+  },
+  {
+    title: "Build your selection",
+    body: "Choose the items and quantities you want to enquire about. Review your selection before sending it. Adding an item does not reserve it.",
+  },
+  {
+    title: "Send your enquiry",
+    body: "Submit your selection through the website's WhatsApp enquiry. AHS Imports can then confirm the product details, availability, pricing, and payment instructions.",
+  },
+  {
+    title: "Review and confirm",
+    body: "Review the information provided by AHS Imports. Only proceed with payment after the business has confirmed the applicable price and payment instructions.",
+  },
+  {
+    title: "Follow the shipping timeline",
+    body: "Ask AHS Imports to confirm the estimated shipping and arrival timeline for your order. A general estimate is not a guaranteed delivery date.",
+  },
+];
+
+const notes = [
+  "An enquiry is not a confirmed order.",
+  "Product availability and final prices must be confirmed.",
+  "Payment instructions should come directly from AHS Imports. This website does not take payment.",
+  "Shipping estimates are not guarantees. The general estimate starts when the goods are shipped, not when you browse, enquire, or pay.",
+  "Delivery fees and any other charges should be confirmed before you proceed.",
+  "Returns, cancellations, and similar terms are not published here. Ask AHS Imports for the terms that apply before you confirm an order.",
 ];
 
 export default function HowItWorksPage() {
@@ -24,84 +47,47 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-[1180px] px-5 py-12 md:px-8 md:py-16">
           <p className="text-[11px] uppercase tracking-[0.28em] text-stone">Preorder guide</p>
           <h1 className="mt-3 max-w-3xl font-display text-5xl leading-none md:text-7xl">
-            How preorders work
+            How preordering works
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone">
-            Browse, send a selection, and let AHS Imports confirm the price and payment
-            instructions. Nothing on this page places or confirms an order by itself.
+            Choose products from the catalogue, send AHS Imports your enquiry, and confirm the important details before proceeding.
           </p>
         </div>
       </header>
 
       <div className="mx-auto grid max-w-[1180px] gap-16 px-5 py-14 md:px-8 md:py-20">
-        <section className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <p className="font-display text-5xl">01</p>
-            <h2 className="mt-3 text-2xl">How to order</h2>
-          </div>
-          <ol className="grid gap-5 lg:col-span-8">
-            {orderSteps.map((step, index) => (
-              <li key={step} className="grid grid-cols-[2.5rem_1fr] gap-3 border-t border-line pt-4">
-                <span className="text-sm text-stone">{String(index + 1).padStart(2, "0")}</span>
-                <p className="leading-relaxed">{step}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="grid gap-8 border-t border-line pt-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <p className="font-display text-5xl">02</p>
-            <h2 className="mt-3 text-2xl">Shipping time</h2>
-          </div>
-          <div className="lg:col-span-8">
-            <p className="max-w-2xl text-lg leading-relaxed">{business.shipping.summary}</p>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-stone">
-              The estimate is {business.shipping.estimate} after the goods are shipped.
-              It is not a promise of a particular arrival day.
-            </p>
-          </div>
-        </section>
-
-        <section className="grid gap-8 border-t border-line pt-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <p className="font-display text-5xl">03</p>
-            <h2 className="mt-3 text-2xl">Payment</h2>
-          </div>
-          <div className="lg:col-span-8">
-            {business.payment.showPublicly ? (
-              <div className="max-w-2xl border border-line bg-paper p-5">
-                <p className="text-sm leading-relaxed">
-                  Unverified demo information from the supplied screenshot. Do not pay this
-                  account unless AHS Imports has confirmed it for your order.
-                </p>
-                <dl className="mt-4 grid gap-2 text-sm">
-                  <div>
-                    <dt className="text-stone">Account name</dt>
-                    <dd>{business.payment.accountName}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-stone">Payment number</dt>
-                    <dd>{business.payment.number}</dd>
-                  </div>
-                </dl>
+        <ol className="grid gap-8">
+          {steps.map((step, index) => (
+            <li key={step.title} className="grid gap-3 border-t border-line pt-6 lg:grid-cols-12">
+              <p className="font-display text-4xl lg:col-span-3">{String(index + 1).padStart(2, "0")}</p>
+              <div className="lg:col-span-8">
+                <h2 className="text-2xl">{step.title}</h2>
+                <p className="mt-3 max-w-2xl leading-relaxed text-stone">{step.body}</p>
               </div>
-            ) : (
-              <p className="max-w-2xl text-lg leading-relaxed">{business.payment.publicNotice}</p>
-            )}
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-stone">
-              This demonstration does not take card payments, generate receipts, or mark a
-              payment as verified.
-            </p>
-          </div>
+            </li>
+          ))}
+        </ol>
+
+        <section className="grid gap-6 border-t border-line pt-12 lg:grid-cols-12">
+          <h2 className="text-2xl lg:col-span-3">Shipping estimate</h2>
+          <p className="max-w-2xl text-lg leading-relaxed lg:col-span-8">{business.shipping.summary}</p>
+        </section>
+
+        <section className="grid gap-6 border-t border-line pt-12 lg:grid-cols-12">
+          <h2 className="text-2xl lg:col-span-3">Important information</h2>
+          <ul className="grid gap-3 lg:col-span-8">
+            {notes.map((note) => (
+              <li key={note} className="leading-relaxed text-stone">{note}</li>
+            ))}
+          </ul>
         </section>
 
         <div className="flex flex-col gap-3 border-t border-line pt-10 sm:flex-row">
           <Link href="/shop" className="btn">
-            Explore the collection
+            Explore products
           </Link>
-          <Link href="/cart" className="inline-flex h-12 items-center justify-center border border-ink px-5 text-sm uppercase tracking-[0.14em]">
-            Review your bag
+          <Link href="/contact" className="btn-line">
+            Contact AHS Imports
           </Link>
         </div>
       </div>
